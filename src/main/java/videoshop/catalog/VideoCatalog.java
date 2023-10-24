@@ -21,6 +21,9 @@ import org.salespointframework.catalog.Catalog;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Streamable;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * An extension of {@link Catalog} to add video shop specific query methods.
  *
@@ -47,5 +50,18 @@ public interface VideoCatalog extends Catalog<Disc> {
 	 */
 	default Streamable<Disc> findByType(DiscType type) {
 		return findByType(type, DEFAULT_SORT);
+	}
+
+	default Streamable<Disc> findByGenre(String genre) {
+		System.out.println("find by Genre starts");
+		List<Disc> discs = new ArrayList<Disc>();
+
+		for (Disc disc : this.findAll()) {
+			if (disc.getGenre().contains(genre)) {
+				discs.add(disc);
+			}
+		}
+		
+		return Streamable.of(discs);
 	}
 }

@@ -69,6 +69,36 @@ class CatalogController {
 		return "catalog";
 	}
 
+	@GetMapping("/action")	
+	String action(Model model) {
+
+		model.addAttribute("catalog", catalog.findByGenre("Action"));
+		model.addAttribute("title", "catalog.bluray.title");
+		model.addAttribute("title", "catalog.dvd.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/animation")	
+	String animation(Model model) {
+
+		model.addAttribute("catalog", catalog.findByGenre("Animation"));
+		model.addAttribute("title", "catalog.bluray.title");
+		model.addAttribute("title", "catalog.dvd.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/comedy")	
+	String comedy(Model model) {
+
+		model.addAttribute("catalog", catalog.findByGenre("Comedy"));
+		model.addAttribute("title", "catalog.bluray.title");
+		model.addAttribute("title", "catalog.dvd.title");
+
+		return "catalog";
+	}
+
 	// (｡◕‿◕｡)
 	// Befindet sich die angesurfte Url in der Form /foo/5 statt /foo?bar=5 so muss man @PathVariable benutzen
 	// Lektüre: http://spring.io/blog/2009/03/08/rest-in-spring-3-mvc/
